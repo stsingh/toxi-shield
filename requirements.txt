@@ -1,6 +1,5 @@
 Flask==2.2.2
 rdkit-pypi==2022.9.3
-urllib
 PubChemPy==1.0.4
 pandas==1.5.2
 numpy==1.24.1
