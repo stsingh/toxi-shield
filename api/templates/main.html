@@ -1,37 +1,37 @@
 <!doctype html>
 <html>
-<style>
-form {
-    margin: auto;
-    width: 35%;
-}
-.result {
-    margin: auto;
-    width: 35%;
-    border: 1px solid #ccc;
-}
-</style>
-<head>
-    <title>Pesticide Tolerance Project</title>
-</head>
-<form action="{{ url_for('main') }}" method="POST">
-    <fieldset>
-        <legend>Input Chemical:</legend>
-        <input name="chemical">
-        <br>
-        <input type="submit">
-    </fieldset>
-</form>
-<br>
-<div class="result" align="center">
-<div class="result" align="center">
-    {% if result %}
-        {% for variable, value in original_input.items() %}
-            <b>{{ variable }}</b> : {{ value }}
-        {% endfor %}
-        <br>
-        <br> Predicted Tolerance:
-           <p style="font-size:50px">{{ result }}</p>
-    {% endif %}
-</div>
+    <head>
+        <link href="../static/styles/output.css" rel="stylesheet">
+        <title>Pesticide Tolerance Project</title>
+    </head>
+    <body class="bg-gray-800 " >
+        <div class="w-full h-screen items-center justify-center">
+            <div class="flex items-center justify-center">
+                <form action="{{ url_for('main') }}" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 my-4 max-w-xs">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="chemical">
+                            Input Chemical:
+                        </label>
+                        <input name="chemical" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Chemical">
+                    </div>
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                        Submit
+                    </button>
+                </form>
+            </div>
+            <br>
+            <div class="result text-white" align="center">
+                <div class="result" align="center">
+                    {% if result %}
+                        {% for variable, value in original_input.items() %}
+                            <b>{{ variable }}</b> : {{ value }}
+                        {% endfor %}
+                        <br>
+                        <br> Predicted Tolerance:
+                        <p style="font-size:50px">{{ result }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
